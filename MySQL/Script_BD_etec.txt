@@ -1,0 +1,42 @@
+create database Tlbd_Julius;
+ 
+USE Tlbd_Julius;
+
+ 
+
+create table tb_produtos
+(
+    cd_produto int not null 
+                   auto_increment primary key,
+    nm_produto varchar(30) not null,
+    qtde_estoque int not null,
+    data_cadastro date not null,
+    valor_venda decimal(9,2) not null,
+    situacao bit not null
+);
+ 
+
+INSERT INTO TB_PRODUTOS 
+(nm_produto, qtde_estoque, data_cadastro, valor_venda, situacao) 
+   VALUES ('produto 3', 250, '2022-08-16', 9.60,0);
+ 
+
+INSERT INTO TB_PRODUTOS 
+(nm_produto, qtde_estoque, data_cadastro, VALOR_VENDA, situacao) 
+   VALUES ('Produto três', 100, '2022-08-24', 5.50,0),
+          ('Produto quatro', 250, '2022-08-20', 12.69,1),
+          ('Produto cinco', 1000, '2022-08-22', 1.99,0),          
+          ('Produto seis', 12, '2022-08-24', 112.00,0);  
+ 
+INSERT INTO TB_PRODUTOS
+    VALUES (0, 'Novo produto 4', 999, '2022-08-16', 9.99,1);
+     
+SELECT * FROM TB_PRODUTOS;  
+
+delete from tb_produtos where data_cadastro < '2022-08-20' and situacao = 0;
+
+update tb_produtos 
+set valor_venda = 119.90,
+	situacao = 0
+where situacao = 1 and valor_venda >= 10.00;
+
